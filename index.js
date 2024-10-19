@@ -7,10 +7,10 @@ const PORT = 5000;
 
 app.use(express.json());
 
-app.use("/user", userRoute);
+app.use("/user", userRoute);  //localhost:5000/user
 
 app.get('/', (req, res) => {
-    res.send("Root Server...!");
+    res.send("Root Server...!");  // localhost:5000
 })
 
 app.listen(PORT, () => {
