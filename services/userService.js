@@ -13,7 +13,7 @@ const getAllUsers = (callback) => {
 }
 
 const saveUser = (user, callback) => {
-    const sql = "INTER INTO user (name, email, mobile) VALUES(?, ?, ?)";
+    const sql = "INSERT INTO user (name, email, mobile) VALUES(?, ?, ?)";
 
     database.query(sql, [user.name, user.email, user.mobile], (err, results) => {
         if (err) {
@@ -27,7 +27,21 @@ const saveUser = (user, callback) => {
 }
 
 
+const updateUser = (id, user, callback) => {
+    const sql = "UPDATE user SET name = ?, email = ?, mobile = ? WHERE id = ?";
+
+    database.query(sql, [user.name, user.email, user.mobile, id], (err, results) => {
+        if (err) {
+            return callback(err, null);
+        } else {
+            callback(null, results);
+        }
+    });
+}
+
+
 module.exports = {
     getAllUsers,
-    saveUser
+    saveUser,
+    updateUser
 }

@@ -33,12 +33,14 @@ const createUser = (req, res) => {
         }else{
             res.status(201).json({
                 message : "User Created Successfully",
-                userId : result.id
             });
         }
     })
 }
 
+const updateUser = (req, res) => {
+    
+}
 
 module.exports = {
     getUsers,
