@@ -1,18 +1,33 @@
-const database = require ("../db/database");
+const database = require("../db/database");
 
 const getAllUsers = (callback) => {
     const sql = "SELECT * FROM user";
 
     database.query(sql, (err, res) => {
-        if(err){
-            return callback (err, null);
-        }else{
+        if (err) {
+            return callback(err, null);
+        } else {
             callback(null, res);
         }
     })
 }
 
+const saveUser = (user, callback) => {
+    const sql = "INTER INTO user (name, email, mobile) VALUES(?, ?, ?)";
+
+    database.query(sql, [user.name, user.email, user.mobile], (err, results) => {
+        if (err) {
+            return callback(err, null);
+        }
+        callback(null, results);
+        // }else{
+        // callback(null, results);
+        // }
+    })
+}
+
 
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    saveUser
 }
