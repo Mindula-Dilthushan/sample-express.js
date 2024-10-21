@@ -39,9 +39,21 @@ const updateUser = (id, user, callback) => {
     });
 }
 
+const deleteUser = (id, callback) => {
+    const sql = "DELETE FROM user WHERE id = ?";
+
+    database.query(sql, [id], (err, results) => {
+        if (err) {
+            return callback(err, null);
+        } else {
+            callback(null, results)
+        }
+    })
+}
 
 module.exports = {
     getAllUsers,
     saveUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

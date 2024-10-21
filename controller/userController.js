@@ -66,8 +66,25 @@ const updateUser = (req, res) => {
     })
 }
 
+const deleteUser = (req, res) => {
+    const userId = req.params.id;
+
+    userService.deleteUser(userId, (err, result) => {
+        if (err) {
+            return res.status(500).json({
+                error: message
+            })
+        } else {
+            res.json({
+                message: "user delete success!"
+            })
+        }
+    })
+}
+
 module.exports = {
     getUsers,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
