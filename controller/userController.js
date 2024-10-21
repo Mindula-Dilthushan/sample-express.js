@@ -20,41 +20,41 @@ const createUser = (req, res) => {
     };
 
     userService.saveUser(newUser, (err, result) => {
-        if(err){
-            if(err.code === "ER_DUP_ENTRY"){
+        if (err) {
+            if (err.code === "ER_DUP_ENTRY") {
                 return res.status(400).json({
-                    error : "Username or email or mobile already exists!"
+                    error: "Username or email or mobile already exists!"
                 });
-            }else{
+            } else {
                 return res.status(500).json({
-                    error : err.message
+                    error: err.message
                 });
             }
-        }else{
+        } else {
             res.status(201).json({
-                message : "User Created Successfully",
+                message: "User Created Successfully",
             });
         }
     })
 }
 
 const updateUser = (req, res) => {
-    const userId = req.param.id;
+    const userId = req.params.id;
 
     const update_User = {
-        name : req.body.name,
-        email : req.body.email,
-        mobile : req.body.mobile
+        name: req.body.name,
+        email: req.body.email,
+        mobile: req.body.mobile
     }
 
     userService.updateUser(userId, update_User, (err, result) => {
-        if(err){
+        if (err) {
             return res.status(500).json({
-                error : err.message
+                error: err.message
             });
         }
 
-        if(result.affectedRows === 0){
+        if (result.affectedRows === 0) {
             return res.status(404).json({
                 error: "user not found!"
             });
