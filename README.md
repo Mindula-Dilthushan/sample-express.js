@@ -9,16 +9,16 @@ git clone https://github.com/Mindula-Dilthushan/sample-express.js
 ```
 ###
 
-
+---
 
 ## USER 
 
-### GET METHOD
+#### GET METHOD
 ```
 localhost:5000/user/getAll
 ```
 
-### POST METHOD
+#### POST METHOD
 ```
 localhost:5000/user/create
 ```
@@ -33,7 +33,7 @@ localhost:5000/user/create
 }
 ```
 
-### PUT METHOD
+#### PUT METHOD
 ```
 localhost:5000/user/update/1
 ```
@@ -48,10 +48,14 @@ localhost:5000/user/update/1
 }
 ```
 
-### DELETE METHOD
+#### DELETE METHOD
 ```
 localhost:5000/user/delete/2
 ```
+
+---
+
+#
 
 ![GitHub issues](https://img.shields.io/github/issues/Mindula-Dilthushan/sample-express.js?&labelColor=black&color=eb3b5a&label=Issues&logo=issues&logoColor=black&style=for-the-badge)
 ![GitHub Contributions](https://img.shields.io/github/contributors/Mindula-Dilthushan/sample-express.js?&labelColor=black&color=8854d0&style=for-the-badge)
