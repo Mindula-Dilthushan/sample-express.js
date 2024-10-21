@@ -39,10 +39,35 @@ const createUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-    
+    const userId = req.param.id;
+
+    const update_User = {
+        name : req.body.name,
+        email : req.body.email,
+        mobile : req.body.mobile
+    }
+
+    userService.updateUser(userId, update_User, (err, result) => {
+        if(err){
+            return res.status(500).json({
+                error : err.message
+            });
+        }
+
+        if(result.affectedRows === 0){
+            return res.status(404).json({
+                error: "user not found!"
+            });
+        }
+
+        res.json({
+            message: "user update success!"
+        })
+    })
 }
 
 module.exports = {
     getUsers,
-    createUser
+    createUser,
+    updateUser
 }
